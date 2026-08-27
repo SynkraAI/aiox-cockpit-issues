@@ -1,0 +1,45 @@
+name: Relato do doctor
+description: Relato estruturado (versão, OS, sintoma, trecho scrubbado). Formulário não obrigatório; relato livre continua bem-vindo.
+title: "[doctor] "
+labels:
+  - via:doctor
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Este formulário materializa o contrato D4 do ADR-DOCTOR-ISSUES-TRIAGE-FLYWHEEL.
+        Relato espontâneo em linguagem natural continua bem-vindo (blank_issues_enabled).
+  - type: input
+    id: version
+    attributes:
+      label: Versão
+      description: Versão reportada pelo doctor (sinkra-os ou Cockpit).
+      placeholder: "ex.: 3.6.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      description: Sistema operacional da máquina onde o doctor rodou.
+      options:
+        - macos
+        - windows
+        - linux
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: Sintoma
+      description: O que falhou, em linguagem natural.
+      placeholder: "ex.: doctor reporta STALE_BUILD no bundle após npx sinkra-os update"
+    validations:
+      required: true
+  - type: textarea
+    id: scrubbed_excerpt
+    attributes:
+      label: Trecho scrubbado
+      description: Trecho do diagnóstico já scrubbado (sem paths de usuário, e-mails, tokens, nem dado de negócio).
+    validations:
+      required: false
